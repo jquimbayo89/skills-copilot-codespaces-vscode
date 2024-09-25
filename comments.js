@@ -18,4 +18,11 @@ http.createServer(function (req, res) {
         res.writeHead(200, { 'Content-Type': 'text/html' });
         res.end(fileContent);
     } else if (pathname == '/submit') {
-        var comment = urlObj
+        var comment = urlObj.query.comment;
+        comments.push(comment);
+        res.writeHead(200, { 'Content-Type': 'text/plain' });
+        res.end('Comment added');
+    }
+}).listen(3000, function() {
+    console.log('Server is listening on port 3000');
+});
